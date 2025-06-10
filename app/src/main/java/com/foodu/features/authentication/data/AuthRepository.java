@@ -9,11 +9,11 @@ import javax.inject.Inject;
 import javax.inject.Singleton;
 
 @Singleton
-public class LoginRepository {
+public class AuthRepository {
     private final FirebaseAuth auth;
 
     @Inject
-    public LoginRepository(FirebaseAuth auth) {
+    public AuthRepository(FirebaseAuth auth) {
         this.auth = auth;
     }
 
@@ -22,6 +22,11 @@ public class LoginRepository {
      */
     public Task<AuthResult> login(String email, String password) {
         return auth.signInWithEmailAndPassword(email, password);
+    }
+
+    /** Register with email & password */
+    public Task<AuthResult> register(String email, String password) {
+        return auth.createUserWithEmailAndPassword(email, password);
     }
 
     /**
