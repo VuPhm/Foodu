@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "490144468222",
+    "project_id": "foodu-c8110",
+    "storage_bucket": "foodu-c8110.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:490144468222:android:bf537ffc85896020d769af",
+        "android_client_info": {
+          "package_name": "com.foodu"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDGfeXD1nFbKy-161xfJU9xRLgFeJ0P-IM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
