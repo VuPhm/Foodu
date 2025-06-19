@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    card_view:cardElevation="4dp"
+    card_view:cardCornerRadius="12dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="8dp"
+        android:gravity="center_vertical">
+
+        <!-- Checkbox để chọn sản phẩm -->
+
+        <!-- Hình ảnh sản phẩm -->
+        <CheckBox
+            android:id="@+id/checkSelect"
+            android:layout_width="31dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginEnd="8dp" />
+
+        <ImageView
+            android:id="@+id/cartItemImage"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginEnd="12dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_launcher_background" />
+
+        <!-- Thông tin sản phẩm -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/cartItemName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Product Name"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/cartItemPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="$0.00"
+                android:textColor="#666666"
+                android:textSize="14sp" />
+
+            <!-- Tăng giảm số lượng -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <Button
+                    android:id="@+id/btnDecrease"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:backgroundTint="#DDDDDD"
+                    android:text="-"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/cartItemQuantity"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:gravity="center"
+                    android:text="1"
+                    android:textSize="16sp" />
+
+                <Button
+                    android:id="@+id/btnIncrease"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginEnd="8dp"
+                    android:backgroundTint="#DDDDDD"
+                    android:text="+"
+                    android:textSize="18sp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Nút xóa -->
+        <Button
+            android:id="@+id/btnRemove"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="top"
+            android:backgroundTint="#FF4444"
+            android:text="X"
+            android:textColor="@android:color/white"
+            android:textSize="14sp" />
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

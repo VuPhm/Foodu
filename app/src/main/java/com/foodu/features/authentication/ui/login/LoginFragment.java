@@ -1,5 +1,6 @@
 package com.foodu.features.authentication.ui.login;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,6 +17,7 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.fragment.NavHostFragment;
 
 import com.foodu.R;
+import com.foodu.features.home.ui.HomeActivity;
 
 import dagger.hilt.android.AndroidEntryPoint;
 
@@ -57,10 +59,17 @@ public class LoginFragment extends Fragment {
         });
 
         viewModel.getUser().observe(getViewLifecycleOwner(), user -> {
+          //  if (user != null) {
+            //    // Navigate to HomeFragment
+             //   NavHostFragment.findNavController(this)
+              //          .navigate(R.id.action_login_to_home);
+           // }
+       // });
             if (user != null) {
-                // Navigate to HomeFragment
-                NavHostFragment.findNavController(this)
-                        .navigate(R.id.action_login_to_home);
+                // Thay vì navigate fragment, mở HomeActivity luôn:
+                Intent intent = new Intent(getActivity(), HomeActivity.class);
+                startActivity(intent);
+                getActivity().finish();
             }
         });
 

@@ -6,6 +6,9 @@ import androidx.lifecycle.ViewModel;
 
 import com.foodu.features.authentication.data.AuthRepository;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.foodu.features.authentication.data.UserModel;
+
 
 import javax.inject.Inject;
 
@@ -34,11 +37,34 @@ public class RegisterViewModel extends ViewModel {
                 .addOnCompleteListener(task -> {
                     isLoading.setValue(false);
                     if (task.isSuccessful()) {
-                        user.setValue(repo.getCurrentUser());
+                        FirebaseUser newUser = repo.getCurrentUser();
+                        user.setValue(newUser);
+
+                        if (newUser != null) {
+                            // ✅ Tạo thông tin người dùng để lưu vào Firestore
+                            UserModel newUserModel = new UserModel(
+                                    newUser.getUid(),
+                                    newUser.getEmail(),
+                                    "", // Name rỗng
+                                    ""  // Avatar URL rỗng
+                            );
+
+                            FirebaseFirestore.getInstance()
+                                    .collection("users")
+                                    .document(newUser.getUid())
+                                    .set(newUserModel)
+                                    .addOnSuccessListener(unused -> {
+                                        // Thành công rồi, không cần làm gì thêm ở đây
+                                    })
+                                    .addOnFailureListener(e -> {
+                                        errorMsg.setValue("Failed to save user profile: " + e.getMessage());
+                                    });
+                        }
                     } else {
                         errorMsg.setValue(task.getException() != null ?
                                 task.getException().getMessage() : "Unknown error");
                     }
                 });
     }
+
 }

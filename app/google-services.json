@@ -1,13 +1,13 @@
 {
   "project_info": {
-    "project_number": "490144468222",
-    "project_id": "foodu-c8110",
-    "storage_bucket": "foodu-c8110.firebasestorage.app"
+    "project_number": "1016298616600",
+    "project_id": "foodorder-40ad0",
+    "storage_bucket": "foodorder-40ad0.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:490144468222:android:bf537ffc85896020d769af",
+        "mobilesdk_app_id": "1:1016298616600:android:f96b4dd0499b929263d06d",
         "android_client_info": {
           "package_name": "com.foodu"
         }
@@ -15,7 +15,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyDGfeXD1nFbKy-161xfJU9xRLgFeJ0P-IM"
+          "current_key": "AIzaSyByF6sLin5P7SMbDCHtElvb81t-3omUoGk"
         }
       ],
       "services": {
