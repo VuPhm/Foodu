@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.android.application)
     id 'com.google.gms.google-services'
     id 'dagger.hilt.android.plugin'
+
 }
 
 android {
@@ -29,8 +30,11 @@ android {
         targetCompatibility JavaVersion.VERSION_11
     }
 }
-
 dependencies {
+    implementation 'androidx.cardview:cardview:1.0.0'
+
+    implementation 'com.google.code.gson:gson:2.10'
+
     implementation libs.appcompat
     implementation libs.material
     implementation libs.navigation.fragment
@@ -43,14 +47,21 @@ dependencies {
     implementation platform('com.google.firebase:firebase-bom:33.15.0')
     implementation 'com.google.firebase:firebase-analytics'
     implementation 'com.google.firebase:firebase-auth'
-//    implementation 'com.google.firebase:firebase-firestore'
-    // Realtime DB
-    implementation 'com.google.firebase:firebase-database'
+    implementation 'com.google.firebase:firebase-firestore'   // ✅ MỞ LẠI
+    implementation 'com.google.firebase:firebase-storage'     // ✅ THÊM MỚI nếu cần ảnh
 
-    // Hilt Dependency Injection
+    // Firebase Realtime Database (tuỳ chọn nếu không dùng Firestore)
+    // implementation 'com.google.firebase:firebase-database' // ❓ Có thể xóa nếu không cần
+
+    // Hilt DI
     implementation "com.google.dagger:hilt-android:2.50"
     annotationProcessor "com.google.dagger:hilt-compiler:2.50"
 
+    // Navigation (đã có)
     implementation "androidx.navigation:navigation-fragment:2.5.3"
     implementation "androidx.navigation:navigation-ui:2.5.3"
+
+    // Glide để load ảnh từ Firebase Storage hoặc Firestore URLs
+    implementation 'com.github.bumptech.glide:glide:4.16.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.16.0'
 }

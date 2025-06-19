@@ -13,6 +13,19 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+        <!-- HomeActivity mới -->
+        <activity
+            android:name="com.foodu.features.home.ui.HomeActivity"
+            android:exported="true" />
+        <activity android:name=".features.order.ui.OrderHistoryActivity" />
+        <activity android:name=".features.payment.ui.PaymentActivity" />
+        <activity android:name=".features.home.ui.ProductViewActivity" />
+
+
+        <!-- CartActivity mới -->
+        <activity
+            android:name="com.foodu.features.cart.ui.CartActivity"
+            android:exported="true" />
     </application>
 
 </manifest>
