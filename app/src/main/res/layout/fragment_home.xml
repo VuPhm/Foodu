@@ -1,24 +1,93 @@
-<?xml version="1.0" encoding="utf-8"?>
+<!-- res/layout/fragment_home.xml -->
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:gravity="center"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="24dp">
+    android:orientation="vertical"
+    android:padding="@dimen/screen_padding"
+    android:background="@color/background"
+    android:gravity="top">
 
-    <TextView
-        android:id="@+id/tvWelcome"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Welcome to Foodu!"
-        android:textSize="18sp"/>
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btnLogout"
+    <!-- Header -->
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Log Out"
-        style="@style/Widget.MaterialComponents.Button"
-        android:layout_marginBottom="24dp"/>
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginBottom="@dimen/element_spacing">
+
+        <TextView
+            android:id="@+id/tvAppTitle"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="Foodu"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textColor="@color/primary" />
+
+        <ImageView
+            android:id="@+id/imgAvatar"
+            android:layout_width="@dimen/avatar_size"
+            android:layout_height="@dimen/avatar_size"
+            android:src="@drawable/ic_avatar"
+            android:background="@drawable/bg_circle"
+            android:scaleType="centerCrop"
+            android:contentDescription="User avatar" />
+    </LinearLayout>
+
+    <!-- Search bar -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@drawable/bg_input"
+        android:orientation="horizontal"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:gravity="center_vertical"
+        android:layout_marginBottom="@dimen/element_spacing">
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/ic_search"
+            app:tint="@color/hint" />
+
+        <EditText
+            android:id="@+id/etSearch"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:hint="Search food or restaurant"
+            android:background="@android:color/transparent"
+            android:textSize="16sp"
+            android:inputType="text"
+            android:paddingStart="8dp"/>
+    </LinearLayout>
+
+    <!-- Danh mục món ăn/danh mục nhanh -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvCategories"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_marginBottom="@dimen/element_spacing"
+        android:clipToPadding="false"/>
+
+    <!-- Sản phẩm nổi bật hoặc gợi ý -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Popular"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:textColor="@color/primary"
+        android:layout_marginBottom="8dp"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvPopular"
+        android:layout_width="match_parent"
+        android:layout_height="140dp"
+        android:orientation="horizontal"
+        android:clipToPadding="false"/>
 </LinearLayout>
