@@ -16,18 +16,30 @@ import com.bumptech.glide.Glide;
 import com.foodu.R;
 import com.foodu.features.cart.data.CartItem;
 import com.foodu.features.cart.data.CartRepository;
-import com.foodu.features.home.data.Product;
-import com.foodu.features.cart.ui.CartActivity;
+import com.foodu.features.home.data.model.Product;
 
+import java.text.NumberFormat;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
+/**
+ * Adapter for displaying products in the home screen RecyclerView.
+ */
 public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductViewHolder> {
 
-    private final List<Product> productList;
     private final Context context;
+    private final List<Product> productList;
+    // Format price in VND
 
+    /**
+     * Constructor for ProductAdapter.
+     * @param productList Initial product list
+     * @param context Context for launching activities
+     */
     public ProductAdapter(List<Product> productList, Context context) {
-        this.productList = productList;
+        // Always use a mutable list to avoid ConcurrentModificationException
+        this.productList = new ArrayList<>(productList != null ? productList : new ArrayList<>());
         this.context = context;
     }
 
@@ -44,11 +56,14 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
 
         holder.name.setText(product.getName());
         holder.price.setText("$" + product.getPrice());
+
+        // Load product image using Glide
         Glide.with(holder.image.getContext())
                 .load(product.getImageUrl())
                 .placeholder(R.drawable.placeholder_image)
                 .into(holder.image);
 
+        // Handle add to cart action
         holder.addToCart.setOnClickListener(v -> {
             CartItem item = new CartItem(
                     product.getId(),
@@ -61,6 +76,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
             CartRepository.getInstance().addItem(item);
         });
 
+        // Handle product item click to show details
         holder.itemView.setOnClickListener(v -> {
             Intent intent = new Intent(context, ProductViewActivity.class);
             intent.putExtra("name", product.getName());
@@ -68,12 +84,23 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
             intent.putExtra("imageUrl", product.getImageUrl());
             context.startActivity(intent);
         });
-
     }
 
     @Override
     public int getItemCount() {
         return productList.size();
+    }
+
+    /**
+     * Update the product list and refresh the UI.
+     * @param products The new list of products to display
+     */
+    public void setData(List<Product> products) {
+        this.productList.clear();
+        if (products != null) {
+            this.productList.addAll(products);
+        }
+        notifyDataSetChanged();
     }
 
     static class ProductViewHolder extends RecyclerView.ViewHolder {

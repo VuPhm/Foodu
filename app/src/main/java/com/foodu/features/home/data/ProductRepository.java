@@ -3,13 +3,19 @@ package com.foodu.features.home.data;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
+import com.foodu.features.home.data.model.Product;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.inject.Inject;
+
 public class ProductRepository {
+
+    @Inject
+    public ProductRepository() {}
 
     private final FirebaseFirestore db = FirebaseFirestore.getInstance();
 
