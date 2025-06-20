@@ -9,9 +9,9 @@
               <option name="connection">
                 <ConnectionSetting>
                   <option name="appId" value="com.foodu" />
-                  <option name="mobileSdkAppId" value="1:490144468222:android:bf537ffc85896020d769af" />
-                  <option name="projectId" value="foodu-c8110" />
-                  <option name="projectNumber" value="490144468222" />
+                  <option name="mobileSdkAppId" value="1:1016298616600:android:f96b4dd0499b929263d06d" />
+                  <option name="projectId" value="foodorder-40ad0" />
+                  <option name="projectNumber" value="1016298616600" />
                 </ConnectionSetting>
               </option>
               <option name="signal" value="SIGNAL_UNSPECIFIED" />
